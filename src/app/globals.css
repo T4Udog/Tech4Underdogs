@@ -1,26 +1,311 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Custom Fonts ─────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Eurostile Extended Black';
+  src: url('/fonts/EurostileExtendedBlack.woff2') format('woff2'),
+       url('/fonts/EurostileExtendedBlack.woff') format('woff'),
+       url('/fonts/EurostileExtendedBlack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: 'Exo';
+  src: url('/fonts/Exo-Black.woff2') format('woff2'),
+       url('/fonts/Exo-Black.woff') format('woff'),
+       url('/fonts/Exo-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Exo';
+  src: url('/fonts/Exo-ExtraBold.woff2') format('woff2'),
+       url('/fonts/Exo-ExtraBold.woff') format('woff'),
+       url('/fonts/Exo-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exo';
+  src: url('/fonts/Exo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exo';
+  src: url('/fonts/Exo-SemiBold.woff2') format('woff2'),
+       url('/fonts/Exo-SemiBold.woff') format('woff'),
+       url('/fonts/Exo-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exo';
+  src: url('/fonts/Exo-Medium.woff2') format('woff2'),
+       url('/fonts/Exo-Medium.woff') format('woff'),
+       url('/fonts/Exo-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Design Tokens ────────────────────────────────────────── */
+
+@theme {
+  --color-orange:  #FF6633;
+  --color-navy:    #1E2A3A;
+  --color-sky:     #CCE1E7;
+  --color-cream:   #F8F0E6;
+  --color-dark:    #111111;
+
+  --font-eurostile: 'Eurostile Extended Black', 'Arial Black', sans-serif;
+  --font-exo:       'Exo', 'Arial', sans-serif;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Exo', sans-serif;
+  background: #ffffff;
+  color: #1E2A3A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
+
+main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ── Hero layout ─────────────────────────────────────────── */
+
+.hero-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0;
+    align-items: start;
+  }
+}
+
+.hero-layout > * {
+  min-width: 0;
+}
+
+/* ── Marquee ──────────────────────────────────────────────── */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ── Accordion ────────────────────────────────────────────── */
+
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq-panel.open {
+  grid-template-rows: 1fr;
+}
+
+.faq-panel-inner {
+  overflow: hidden;
+}
+
+/* ── Button focus ring ────────────────────────────────────── */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #FF6633;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Design System Utilities ──────────────────────────────── */
+
+/* Section layout */
+.section-container {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .section-container { padding-inline: 3.5rem; }
+}
+
+.section-y {
+  padding-block: 4rem;
+}
+@media (min-width: 768px) {
+  .section-y { padding-block: 5rem; }
+}
+@media (min-width: 1024px) {
+  .section-y { padding-block: 7rem; }
+}
+
+/* Headings */
+.h-section {
+  font-family: var(--font-eurostile);
+  font-size: clamp(1.5rem, 3vw, 2.75rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.h-compact {
+  font-family: var(--font-eurostile);
+  font-size: clamp(1.1rem, 2vw, 1.75rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+/* Outlined heading text — swap-in for emphasis */
+.text-outlined-navy {
+  color: transparent;
+  -webkit-text-stroke: 1.4px #1E2A3A;
+  paint-order: stroke fill;
+}
+.text-outlined-white {
+  color: transparent;
+  -webkit-text-stroke: 1.4px #ffffff;
+  paint-order: stroke fill;
+}
+.text-outlined-orange {
+  color: transparent;
+  -webkit-text-stroke: 1.4px #FF6633;
+  paint-order: stroke fill;
+}
+@media (min-width: 768px) {
+  .text-outlined-navy   { -webkit-text-stroke-width: 1.5px; }
+  .text-outlined-white  { -webkit-text-stroke-width: 1.5px; }
+  .text-outlined-orange { -webkit-text-stroke-width: 1.5px; }
+}
+@media (min-width: 1024px) {
+  .text-outlined-navy   { -webkit-text-stroke-width: 2px; }
+  .text-outlined-white  { -webkit-text-stroke-width: 2px; }
+  .text-outlined-orange { -webkit-text-stroke-width: 2px; }
+}
+
+/* Eyebrow label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-exo);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(30, 42, 58, 0.6);
+}
+.eyebrow-dark { color: rgba(255, 255, 255, 0.6); }
+.eyebrow-mark {
+  font-size: 1.1rem;
+  line-height: 1;
+  color: rgba(30, 42, 58, 0.4);
+}
+.eyebrow-dark .eyebrow-mark { color: rgba(255, 102, 51, 0.7); }
+
+/* Body text */
+.body-text {
+  font-family: var(--font-exo);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(30, 42, 58, 0.75);
+}
+.body-text-dark { color: rgba(255, 255, 255, 0.75); }
+
+/* Tagline (Eurostile, smaller, end-of-section emphasis) */
+.tagline {
+  font-family: var(--font-eurostile);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+@media (min-width: 1024px) {
+  .tagline { font-size: 1.5rem; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-exo);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+  min-height: 44px;
+  padding: 0.875rem 1.5rem;
+}
+.btn-sm { padding: 0.75rem 1.25rem; }
+.btn-lg { padding: 1rem 2rem; }
+
+.btn-primary {
+  background-color: #FF6633;
+  color: #ffffff;
+}
+.btn-primary:hover { background-color: #e85a2b; }
+
+.btn-secondary {
+  background-color: #1E2A3A;
+  color: #ffffff;
+}
+.btn-secondary:hover { background-color: rgba(30, 42, 58, 0.85); }
+
+/* Gradient backgrounds */
+.bg-teal-gradient {
+  background: linear-gradient(175deg, #1e7890 0%, #0d5068 35%, #073a4f 70%, #052b3a 100%);
+}
+
