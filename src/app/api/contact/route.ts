@@ -9,11 +9,11 @@ export async function POST(request: Request) {
 
   const { firstName, businessName, email, phone, service, message } = body as Record<string, unknown>;
 
-  if (!firstName || !businessName || !email || !phone || !service) {
+  if (!firstName || !businessName || !email) {
     return NextResponse.json({ ok: false, error: "missing-fields" }, { status: 400 });
   }
 
-  // TODO: wire to email provider (Resend, Postmark, etc.) or CRM webhook.
+  // TODO(Andrew): wire to email provider (Resend, Postmark, etc.) or CRM webhook.
   console.log("[contact form]", { firstName, businessName, email, phone, service, message });
 
   return NextResponse.json({ ok: true });

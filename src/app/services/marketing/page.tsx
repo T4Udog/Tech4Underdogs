@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Testimonials from "@/components/sections/Testimonials";
+import { PrimaryCta, SecondaryCta } from "@/components/PrimaryCta";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Online Marketing | Tech 4 Underdogs",
@@ -96,26 +99,6 @@ const inclusions = [
   "Plain-language strategy reviews",
 ];
 
-const testimonials = [
-  {
-    quote:
-      "I'd been burned by two agencies before. These guys told me exactly what they were going to do, and then they did it. My calls have gone up noticeably.",
-    name: "Dave M.",
-    role: "Local Home Services",
-  },
-  {
-    quote:
-      "My Google listing was a mess — wrong hours, no photos, old info. They cleaned it up and I started getting more calls almost immediately.",
-    name: "Priya K.",
-    role: "Independent Retailer",
-  },
-  {
-    quote:
-      "I didn't know what I was spending on Google Ads or if it was doing anything. Now I get a clear report every month and I actually understand it.",
-    name: "Tom R.",
-    role: "Small Business Owner",
-  },
-];
 
 /* ── Page ──────────────────────────────────────────────────── */
 
@@ -160,12 +143,8 @@ export default function MarketingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-                <Link href="/pricing#marketing-pricing" className="btn btn-primary justify-center sm:justify-start">
-                  See Pricing <span aria-hidden="true">✦</span>
-                </Link>
-                <Link href="/contact?service=marketing" className="btn btn-secondary justify-center sm:justify-start">
-                  Talk to a Real Person <span aria-hidden="true">✦</span>
-                </Link>
+                <PrimaryCta className="justify-center sm:justify-start" />
+                <SecondaryCta className="justify-center sm:justify-start" href="/pricing#marketing-pricing" label="See Pricing" />
               </div>
             </div>
 
@@ -198,7 +177,7 @@ export default function MarketingPage() {
               <h2 className="h-section text-navy mb-7">
                 Most small businesses are{" "}
                 <span className="italic text-orange">invisible online</span> — and{" "}
-                <span className="italic text-outlined-navy">paying too much</span>{" "}
+                <span className="italic text-navy">paying too much</span>{" "}
                 to stay that way.
               </h2>
 
@@ -266,7 +245,7 @@ export default function MarketingPage() {
               </p>
               <p className="h-section">
                 <span className="text-white">Marketing that&apos;s{" "}</span>
-                <span className="italic text-outlined-white">honest</span>{" "}
+                <span className="italic text-white">honest</span>{" "}
                 <span className="text-white">about cost and{" "}</span>
                 <span className="italic text-orange">clear about what it does.</span>
               </p>
@@ -290,7 +269,7 @@ export default function MarketingPage() {
                 Local SEO that{" "}
                 <span className="italic text-orange">gets you found</span> —
                 backed by ads and a Google presence that{" "}
-                <span className="italic text-outlined-navy">does the work for you.</span>
+                <span className="italic text-navy">does the work for you.</span>
               </h2>
 
               <p className="body-text mb-6">
@@ -348,7 +327,7 @@ export default function MarketingPage() {
                   Real{" "}
                   <span className="italic text-orange">visibility work</span>{" "}
                   — not{" "}
-                  <span className="italic text-outlined-navy">marketing theater.</span>
+                  <span className="italic text-navy">marketing theater.</span>
                 </h2>
               </div>
               <Link
@@ -398,7 +377,7 @@ export default function MarketingPage() {
 
               <h2 className="h-section text-navy mb-6">
                 We do{" "}
-                <span className="italic text-outlined-navy">the marketing.</span>
+                <span className="italic text-navy">the marketing.</span>
                 <br />
                 You{" "}
                 <span className="italic text-orange">run the business.</span>
@@ -423,48 +402,19 @@ export default function MarketingPage() {
       </section>
 
       {/* ── 7. Testimonials ─────────────────────────────── */}
-      <section className="bg-sky overflow-hidden">
+      <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">
           <div className="max-w-[1100px] mx-auto">
-
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-              <h2 className="h-compact text-navy">
-                Real results from{" "}
-                <span className="italic text-outlined-orange">real owners</span>{" "}
-                <span className="italic text-orange">— in their words.</span>
-              </h2>
-              <p className="eyebrow flex-shrink-0">
-                <span className="eyebrow-mark">✺</span>
-                What clients say
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-5">
-              {testimonials.map((t) => (
-                <figure
-                  key={t.name}
-                  className="bg-white rounded-2xl border border-navy/10 p-7 flex flex-col"
-                >
-                  <span
-                    className="font-eurostile text-orange text-[3rem] leading-none mb-3"
-                    aria-hidden="true"
-                  >
-                    &ldquo;
-                  </span>
-                  <blockquote className="font-exo font-medium text-navy/80 text-[0.95rem] leading-[1.7] mb-6 flex-1">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption>
-                    <p className="font-exo font-extrabold text-orange text-xs tracking-[0.18em] uppercase mb-0.5">
-                      {t.name}
-                    </p>
-                    <p className="font-exo font-medium text-navy/55 text-xs tracking-wide uppercase">
-                      {t.role}
-                    </p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <Testimonials
+              eyebrow="What clients say"
+              heading={
+                <h2 className="h-compact text-navy text-balance">
+                  Real results from{" "}
+                  <span className="italic text-orange">real owners</span>{" "}
+                  <span className="italic text-orange">— in their words.</span>
+                </h2>
+              }
+            />
           </div>
         </div>
       </section>
@@ -485,7 +435,7 @@ export default function MarketingPage() {
 
               <h2 className="h-section mb-6">
                 <span className="text-white">Ready to see what{" "}</span>
-                <span className="italic text-outlined-white">straightforward marketing</span>{" "}
+                <span className="italic text-white">straightforward marketing</span>{" "}
                 <span className="italic text-orange">looks like?</span>
               </h2>
 
@@ -499,43 +449,43 @@ export default function MarketingPage() {
 
             <div className="grid md:grid-cols-2 gap-5">
 
-              {/* Primary CTA — See Pricing */}
+              {/* Primary CTA — Talk to a Real Person */}
               <div className="bg-orange rounded-2xl p-7 lg:p-9 flex flex-col">
                 <p className="font-exo font-extrabold text-white/70 text-xs tracking-[0.22em] uppercase mb-3">
                   Primary path
                 </p>
                 <h3 className="font-eurostile uppercase text-white text-[1.4rem] lg:text-[1.65rem] tracking-wide leading-[1.1] mb-4">
-                  Start with the numbers.
+                  Have a real conversation.
                 </h3>
                 <p className="font-exo font-medium text-white/90 text-[0.95rem] leading-[1.65] mb-7 flex-1">
-                  Transparent pricing for Local SEO, Google Ads, and Google
-                  Business Profile management. No forms. No commitment.
+                  Tell us about your business and we&apos;ll guide you to what
+                  makes sense. No forms. No commitment. No pitch.
                 </p>
                 <Link
-                  href="/pricing#marketing-pricing"
+                  href={site.cta.primary.href}
                   className="font-exo font-extrabold text-xs tracking-[0.18em] uppercase text-orange bg-white hover:bg-cream transition-colors rounded-md py-3.5 px-6 flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
                 >
-                  See Pricing <span aria-hidden="true">→</span>
+                  {site.cta.primary.label} <span aria-hidden="true">→</span>
                 </Link>
               </div>
 
-              {/* Secondary CTA — Talk to a Real Person */}
+              {/* Secondary CTA — See Pricing */}
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7 lg:p-9 flex flex-col">
                 <p className="font-exo font-extrabold text-white/55 text-xs tracking-[0.22em] uppercase mb-3">
-                  Or talk it through
+                  Or start with numbers
                 </p>
                 <h3 className="font-eurostile uppercase text-white text-[1.4rem] lg:text-[1.65rem] tracking-wide leading-[1.1] mb-4">
-                  Have a real conversation.
+                  See the pricing.
                 </h3>
                 <p className="font-exo font-medium text-white/80 text-[0.95rem] leading-[1.65] mb-7 flex-1">
-                  Not sure where to start? Tell us about your business and
-                  we&apos;ll guide you to what makes sense. No pitch.
+                  Transparent pricing for Local SEO, Google Ads, and Google
+                  Business Profile management.
                 </p>
                 <Link
-                  href="/contact?service=marketing"
+                  href="/pricing#marketing-pricing"
                   className="btn btn-secondary justify-center w-full bg-navy hover:bg-navy/85"
                 >
-                  Talk to a Real Person <span aria-hidden="true">✦</span>
+                  See Pricing <span aria-hidden="true">✦</span>
                 </Link>
               </div>
             </div>

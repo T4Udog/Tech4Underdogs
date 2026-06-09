@@ -4,7 +4,7 @@ export default function ContactHero() {
   return (
     <section className="bg-cream overflow-hidden">
       <div className="section-container section-y">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
 
           {/* ── Left col ────────────────────────────────── */}
           <div className="flex flex-col">
@@ -13,12 +13,14 @@ export default function ContactHero() {
               Contact Tech 4 Underdogs
             </p>
 
-            <h1 className="h-section text-navy mb-6 break-words">
+            <h1
+              className="h-section text-navy mb-6 text-balance"
+              style={{ fontSize: "clamp(2.2rem, 4.6vw, 4.25rem)" }}
+            >
               Tell us what&apos;s{" "}
-              <span className="italic text-orange">going on.</span>
-              <br />
+              <span className="italic text-orange whitespace-nowrap">going on.</span>{" "}
               We&apos;ll{" "}
-              <span className="italic text-outlined-navy">take it from there.</span>
+              <span className="italic text-outlined-navy whitespace-nowrap">take it from there.</span>
             </h1>
 
             {/* Mobile-only Archie image */}
@@ -40,7 +42,7 @@ export default function ContactHero() {
               no pitch.
             </p>
 
-            <p className="tagline whitespace-nowrap" style={{ fontSize: "0.9rem", letterSpacing: "-0.01em" }}>
+            <p className="tagline text-navy">
               Steady. Reliable.{" "}
               <span className="italic text-orange">On your side.</span>
             </p>
@@ -51,10 +53,10 @@ export default function ContactHero() {
             <Image
               src="/images/Archie-On-Your-Side.png"
               alt="Archie the Tech 4 Underdogs mascot, ready to help"
-              width={560}
+              width={620}
               height={620}
               priority
-              className="w-full max-w-[380px] h-auto object-contain"
+              className="w-full max-w-[420px] xl:max-w-[470px] h-auto object-contain"
             />
           </div>
         </div>

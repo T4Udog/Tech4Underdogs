@@ -141,7 +141,7 @@ export default function FAQSection() {
         {/* ── Heading row ─────────────────────────────── */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-10">
           <h2 className="h-compact">
-            <span className="italic text-outlined-orange">Real</span>
+            <span className="italic text-orange">Real</span>
             <span className="text-navy"> answers to the questions</span>
             <br />
             <span className="text-navy">small business owners </span>

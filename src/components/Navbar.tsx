@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { site } from "@/lib/site";
 
 type NavLink =
   | { label: string; href: string; children?: undefined }
@@ -183,7 +184,7 @@ export default function Navbar() {
               );
             })}
           </ul>
-          <Link href="/contact" className="btn btn-primary btn-sm">
+          <Link href={site.cta.primary.href} className="btn btn-primary btn-sm">
             Get Started <span aria-hidden="true">✦</span>
           </Link>
         </div>
@@ -265,7 +266,7 @@ export default function Navbar() {
           })}
           <li className="py-4">
             <Link
-              href="/contact"
+              href={site.cta.primary.href}
               onClick={closeAll}
               className="btn btn-primary w-full justify-center"
             >

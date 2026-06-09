@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, type FormEvent } from "react";
+import { site } from "@/lib/site";
 
 type ServiceValue =
   | "it-support"
@@ -31,16 +32,46 @@ const serviceLinks: { value: ServiceValue; icon: string; title: string; href: st
   },
 ];
 
+type FieldErrors = {
+  firstName?: string;
+  businessName?: string;
+  email?: string;
+};
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validate(values: { firstName: string; businessName: string; email: string }): FieldErrors {
+  const errors: FieldErrors = {};
+  if (!values.firstName.trim()) errors.firstName = "Please enter your first name.";
+  if (!values.businessName.trim()) errors.businessName = "Please enter your business name.";
+  if (!values.email.trim()) errors.email = "Please enter your email.";
+  else if (!EMAIL_RE.test(values.email.trim())) errors.email = "Please enter a valid email address.";
+  return errors;
+}
+
 export default function ContactFormSection() {
   const [service, setService] = useState<ServiceValue>("not-sure");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errors, setErrors] = useState<FieldErrors>({});
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const values = {
+      firstName: String(formData.get("firstName") ?? ""),
+      businessName: String(formData.get("businessName") ?? ""),
+      email: String(formData.get("email") ?? ""),
+    };
+    const fieldErrors = validate(values);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
+      setStatus("idle");
+      return;
+    }
+    setErrors({});
     setStatus("submitting");
 
-    const formData = new FormData(e.currentTarget);
     const payload = Object.fromEntries(formData.entries());
 
     try {
@@ -72,15 +103,15 @@ export default function ContactFormSection() {
                 Let&apos;s talk
               </p>
 
-              <h2 className="h-section mb-6">
+              <h2 className="h-section mb-6 text-balance">
                 <span className="text-white">No commitment. </span>
-                <span className="italic text-outlined-white">No pitch.</span>
+                <span className="italic text-white">No pitch.</span>
                 <br />
                 <span className="text-white">Just a </span>
                 <span className="italic text-orange">real conversation.</span>
               </h2>
 
-              <p className="body-text body-text-dark max-w-[480px] mb-9">
+              <p className="body-text body-text-dark max-w-[480px] mb-9 text-pretty">
                 A straightforward talk about your technology, your website, or
                 your marketing — and whether we&apos;re the right fit to help.
               </p>
@@ -98,16 +129,6 @@ export default function ContactFormSection() {
                 ))}
               </ul>
 
-              <div className="hidden lg:block">
-                <Image
-                  src="/images/Archie-Capable.png"
-                  alt=""
-                  width={200}
-                  height={220}
-                  className="w-[180px] h-auto object-contain opacity-95"
-                  aria-hidden="true"
-                />
-              </div>
             </div>
 
             {/* Right: form card */}
@@ -118,30 +139,30 @@ export default function ContactFormSection() {
                     <span className="eyebrow-mark text-orange">✺</span>
                     Message sent
                   </p>
-                  <h3 className="h-compact text-navy mb-4">
+                  <h3 className="h-compact text-navy mb-4 text-balance">
                     <span>Thanks — we&apos;ve </span>
                     <span className="italic text-orange">got it from here.</span>
                   </h3>
-                  <p className="body-text max-w-[400px] mx-auto">
-                    A real person will reach out within one business day. In the
-                    meantime, feel free to email us directly.
+                  <p className="body-text max-w-[400px] mx-auto text-pretty">
+                    A real person will reach out within one business day. No
+                    sales pressure, ever.
                   </p>
                   <a
-                    href="mailto:contact@tech4underdogs.com"
+                    href={`mailto:${site.email}`}
                     className="font-exo font-bold text-orange text-sm tracking-[0.18em] uppercase mt-6 inline-block hover:underline"
                   >
-                    contact@tech4underdogs.com
+                    {site.email}
                   </a>
                 </div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
                   <div className="grid sm:grid-cols-2 gap-5">
-                    <Field label="First name" name="firstName" required autoComplete="given-name" />
-                    <Field label="Business name" name="businessName" required autoComplete="organization" />
+                    <Field label="First name" name="firstName" required autoComplete="given-name" error={errors.firstName} />
+                    <Field label="Business name" name="businessName" required autoComplete="organization" error={errors.businessName} />
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
-                    <Field label="Email" name="email" type="email" required autoComplete="email" />
-                    <Field label="Phone" name="phone" type="tel" required autoComplete="tel" />
+                    <Field label="Email" name="email" type="email" required autoComplete="email" error={errors.email} />
+                    <Field label="Phone" name="phone" type="tel" autoComplete="tel" optional />
                   </div>
 
                   <div className="flex flex-col">
@@ -189,9 +210,9 @@ export default function ContactFormSection() {
 
                   {status === "error" && (
                     <p role="alert" className="font-exo font-medium text-orange text-sm text-center">
-                      Something went wrong sending that. Email us directly at{" "}
-                      <a href="mailto:contact@tech4underdogs.com" className="underline">
-                        contact@tech4underdogs.com
+                      Something went wrong sending your message. Please try again, or email us at{" "}
+                      <a href={`mailto:${site.email}`} className="underline">
+                        {site.email}
                       </a>.
                     </p>
                   )}
@@ -203,7 +224,7 @@ export default function ContactFormSection() {
       </section>
 
       {/* ── Service jump cards (now after form) ─────── */}
-      <section className="bg-sky overflow-hidden">
+      <section className="bg-cream overflow-hidden">
         <div className="section-container py-14 lg:py-20">
           <div className="max-w-[1100px] mx-auto">
             <p className="font-exo font-bold text-xs tracking-[0.22em] uppercase text-navy/55 text-center mb-6">
@@ -252,23 +273,38 @@ type FieldProps = {
   name: string;
   type?: string;
   required?: boolean;
+  optional?: boolean;
   autoComplete?: string;
+  error?: string;
 };
 
-function Field({ label, name, type = "text", required, autoComplete }: FieldProps) {
+function Field({ label, name, type = "text", required, optional, autoComplete, error }: FieldProps) {
+  const errorId = `${name}-error`;
   return (
     <div className="flex flex-col">
       <label htmlFor={name} className="font-exo font-bold text-xs tracking-[0.18em] uppercase text-navy/70 mb-2">
-        {label}{required && <span className="text-orange ml-1" aria-hidden="true">*</span>}
+        {label}
+        {required && <span className="text-orange ml-1" aria-hidden="true">*</span>}
+        {optional && <span className="font-medium text-navy/40 normal-case tracking-normal ml-1">(optional)</span>}
       </label>
       <input
         id={name}
         name={name}
         type={type}
-        required={required}
         autoComplete={autoComplete}
-        className="font-exo font-medium text-[0.95rem] text-navy bg-cream/60 border border-navy/15 rounded-md px-4 py-3 focus:border-orange focus:outline-none focus:ring-2 focus:ring-orange/30 transition-colors"
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
+        className={`font-exo font-medium text-[0.95rem] text-navy bg-cream/60 border rounded-md px-4 py-3 focus:outline-none focus:ring-2 transition-colors ${
+          error
+            ? "border-orange/70 focus:border-orange focus:ring-orange/30"
+            : "border-navy/15 focus:border-orange focus:ring-orange/30"
+        }`}
       />
+      {error && (
+        <p id={errorId} role="alert" className="font-exo font-medium text-orange text-[0.8rem] mt-1.5">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

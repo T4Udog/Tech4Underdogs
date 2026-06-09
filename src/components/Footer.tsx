@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ComponentType } from "react";
+import { site } from "@/lib/site";
 
 function FacebookIcon() {
   return (
@@ -31,11 +33,11 @@ function YouTubeIcon() {
   );
 }
 
-const socials = [
-  { Icon: FacebookIcon, label: "Facebook" },
-  { Icon: ThreadsIcon, label: "Threads" },
-  { Icon: TwitterIcon, label: "Twitter / X" },
-  { Icon: YouTubeIcon, label: "YouTube" },
+const socials: { Icon: ComponentType; label: string; href: string }[] = [
+  { Icon: FacebookIcon, label: "Facebook", href: site.social.facebook },
+  { Icon: ThreadsIcon, label: "Threads", href: site.social.threads },
+  { Icon: TwitterIcon, label: "Twitter / X", href: site.social.x },
+  { Icon: YouTubeIcon, label: "YouTube", href: site.social.youtube },
 ];
 
 const navLinks = [
@@ -102,11 +104,13 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-2">
-              {socials.map(({ Icon, label }) => (
+              {socials.filter((s) => s.href).map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded border border-navy/20 flex items-center justify-center text-navy/50 hover:text-orange hover:border-orange transition-colors cursor-pointer"
                 >
                   <Icon />
@@ -126,7 +130,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:+15555550199"
+                  href={site.phone.href}
                   className="font-exo font-medium text-navy/65 text-[0.9rem] hover:text-orange transition-colors flex items-center gap-3 leading-snug cursor-pointer"
                 >
                   <span className="text-orange flex-shrink-0" aria-hidden="true">
@@ -134,12 +138,12 @@ export default function Footer() {
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
                   </span>
-                  (555) 555-0199
+                  {site.phone.display}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:contact@tech4underdogs.com"
+                  href={`mailto:${site.email}`}
                   className="font-exo font-medium text-navy/65 text-[0.9rem] hover:text-orange transition-colors flex items-center gap-3 leading-snug cursor-pointer break-all"
                 >
                   <span className="text-orange flex-shrink-0" aria-hidden="true">
@@ -148,16 +152,16 @@ export default function Footer() {
                       <polyline points="22,6 12,13 2,6" />
                     </svg>
                   </span>
-                  contact@tech4underdogs.com
+                  {site.email}
                 </a>
               </li>
               <li>
-                <a
-                  href="/contact"
+                <Link
+                  href={site.cta.primary.href}
                   className="font-exo font-extrabold text-orange text-xs tracking-[0.18em] uppercase mt-2 inline-flex items-center gap-2 hover:text-navy transition-colors cursor-pointer"
                 >
                   Send us a message <span aria-hidden="true">→</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

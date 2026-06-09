@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PrimaryCta, SecondaryCta } from "@/components/PrimaryCta";
 
 export default function HeroSection() {
   return (
@@ -44,15 +45,11 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mb-6">
-              <a href="#contact" className="btn btn-primary justify-center sm:justify-start">
-                Talk to a Real Person <span aria-hidden="true">✦</span>
-              </a>
-              <a href="#services" className="btn btn-secondary justify-center sm:justify-start">
-                See How We Help <span aria-hidden="true">✦</span>
-              </a>
+              <PrimaryCta className="justify-center sm:justify-start" />
+              <SecondaryCta className="justify-center sm:justify-start" href="#services" />
             </div>
 
-            <p className="tagline whitespace-nowrap" style={{ fontSize: "0.9rem", letterSpacing: "-0.01em" }}>
+            <p className="tagline text-navy">
               Built tough.{" "}
               <span className="italic text-orange">Still standing.</span>
             </p>
@@ -85,7 +82,7 @@ export default function HeroSection() {
                 style={{
                   borderTop: "6px solid transparent",
                   borderBottom: "6px solid transparent",
-                  borderLeft: `6px solid #F8F0E6`,
+                  borderLeft: `6px solid var(--color-cream)`,
                 }}
                 aria-hidden="true"
               />

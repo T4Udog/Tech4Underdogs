@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { site } from "@/lib/site";
 
 const services = [
   {
@@ -32,7 +34,7 @@ export default function ServicesSection() {
     >
       <div className="section-container section-y relative z-10">
 
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-14 lg:mb-16">
           <div>
             <p className="eyebrow eyebrow-dark mb-5">
               <span className="eyebrow-mark">✺</span>
@@ -44,7 +46,7 @@ export default function ServicesSection() {
               <br />
               <span className="italic text-orange">Three things</span>
               <br />
-              <span className="italic text-outlined-white">done right.</span>
+              <span className="italic text-white">done right.</span>
             </h2>
 
             <p className="body-text body-text-dark max-w-[520px]">
@@ -68,29 +70,30 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
           {services.map((s) => (
             <div
               key={s.title}
               className="rounded-2xl p-8 flex flex-col items-center text-center border border-white/10"
               style={{ background: "rgba(255,255,255,0.08)" }}
             >
-              <div className="mb-5 w-14 h-14 flex items-center justify-center">
+              <div className="mb-6 w-16 h-16 flex items-center justify-center">
                 <Image
                   src={s.icon}
                   alt=""
-                  width={52}
-                  height={52}
-                  className="w-13 h-13 object-contain"
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-contain"
+                  style={{ filter: "brightness(0) invert(1)" }}
                   aria-hidden="true"
                 />
               </div>
 
-              <h3 className="font-eurostile text-white text-[1rem] uppercase tracking-wide mb-3">
+              <h3 className="font-eurostile text-white tracking-wide mb-4" style={{ fontSize: "1.35rem", lineHeight: 1.15, textTransform: "uppercase" }}>
                 {s.title}
               </h3>
 
-              <p className="font-exo font-medium text-white/80 text-[0.9rem] leading-[1.7] mb-6 flex-1">
+              <p className="font-exo font-medium text-white/80 text-[0.95rem] leading-[1.7] mb-6 flex-1">
                 {s.description}
               </p>
 
@@ -102,6 +105,19 @@ export default function ServicesSection() {
               </a>
             </div>
           ))}
+        </div>
+
+        <div className="bg-white/10 border border-white/15 rounded-2xl px-6 py-5 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-center sm:text-left">
+          <p className="font-eurostile uppercase text-white text-[0.95rem] lg:text-[1.05rem] tracking-wide leading-tight text-balance">
+            <span className="italic text-orange">{site.pricing.startingPrice}</span>{" "}
+            — month-to-month, no long-term contracts.
+          </p>
+          <Link
+            href={site.pricing.href}
+            className="font-exo font-extrabold text-xs tracking-[0.18em] uppercase text-orange hover:text-white transition-colors inline-flex items-center gap-2 flex-shrink-0 cursor-pointer"
+          >
+            See Pricing <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
         <p className="font-exo font-semibold text-white/50 text-xs tracking-[0.18em] uppercase text-center flex items-center justify-center gap-2">

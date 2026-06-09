@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Testimonials from "@/components/sections/Testimonials";
+import { PrimaryCta, SecondaryCta } from "@/components/PrimaryCta";
 
 export const metadata: Metadata = {
   title: "Web Design & Hosting | Tech 4 Underdogs",
@@ -95,26 +97,6 @@ const inclusions = [
   "Same team builds it and supports it",
 ];
 
-const testimonials = [
-  {
-    quote:
-      "I had a site from a freelancer that nobody could maintain. These guys rebuilt it, host it, and keep it running. I haven't thought about it in months — that's the best part.",
-    name: "Mike L.",
-    role: "Local Service Owner",
-  },
-  {
-    quote:
-      "When my old site started ranking poorly, I called and got a real answer that day. They walked me through what was broken and fixed it within the week.",
-    name: "Renee P.",
-    role: "Independent Retailer",
-  },
-  {
-    quote:
-      "I wanted a professional site without paying a big agency. They delivered exactly that, kept the price clear, and built it around my actual customers.",
-    name: "Anthony G.",
-    role: "Small Business Owner",
-  },
-];
 
 /* ── Page ──────────────────────────────────────────────────── */
 
@@ -159,12 +141,8 @@ export default function WebDesignPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-                <Link href="/pricing#web-pricing" className="btn btn-primary justify-center sm:justify-start">
-                  See Pricing <span aria-hidden="true">✦</span>
-                </Link>
-                <Link href="/contact?service=web" className="btn btn-secondary justify-center sm:justify-start">
-                  Talk to a Real Person <span aria-hidden="true">✦</span>
-                </Link>
+                <PrimaryCta className="justify-center sm:justify-start" />
+                <SecondaryCta className="justify-center sm:justify-start" href="/pricing#web-pricing" label="See Pricing" />
               </div>
             </div>
 
@@ -197,7 +175,7 @@ export default function WebDesignPage() {
               <h2 className="h-section text-navy mb-7">
                 A bad website doesn&apos;t just{" "}
                 <span className="italic text-orange">sit there.</span>{" "}
-                <span className="italic text-outlined-navy">It costs you customers.</span>
+                <span className="italic text-navy">It costs you customers.</span>
               </h2>
 
               <p className="body-text">
@@ -242,7 +220,7 @@ export default function WebDesignPage() {
           <div className="max-w-[900px] mx-auto text-center">
             <p className="h-section">
               <span className="text-white">A site is{" "}</span>
-              <span className="italic text-outlined-white">a tool,</span>{" "}
+              <span className="italic text-white">a tool,</span>{" "}
               <span className="text-white">not an art project.</span>
               <br />
               <span className="text-white">We build the kind that{" "}</span>
@@ -266,7 +244,7 @@ export default function WebDesignPage() {
               <h2 className="h-section text-navy mb-7">
                 Fast, professional websites built for{" "}
                 <span className="italic text-orange">local visibility</span> —{" "}
-                <span className="italic text-outlined-navy">backed by real support.</span>
+                <span className="italic text-navy">backed by real support.</span>
               </h2>
 
               <p className="body-text mb-6">
@@ -323,7 +301,7 @@ export default function WebDesignPage() {
                   Every site ships with{" "}
                   <span className="italic text-orange">everything it needs</span>{" "}
                   to{" "}
-                  <span className="italic text-outlined-navy">earn its keep.</span>
+                  <span className="italic text-navy">earn its keep.</span>
                 </h2>
               </div>
               <Link
@@ -362,7 +340,7 @@ export default function WebDesignPage() {
 
               <h2 className="h-section text-navy mb-6">
                 The same people who{" "}
-                <span className="italic text-outlined-navy">build it</span>{" "}
+                <span className="italic text-navy">build it</span>{" "}
                 are the ones who{" "}
                 <span className="italic text-orange">support it.</span>
               </h2>
@@ -395,48 +373,19 @@ export default function WebDesignPage() {
       </section>
 
       {/* ── 7. Testimonials ─────────────────────────────── */}
-      <section className="bg-sky overflow-hidden">
+      <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">
           <div className="max-w-[1100px] mx-auto">
-
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-              <h2 className="h-compact text-navy">
-                Real{" "}
-                <span className="italic text-outlined-orange">site owners.</span>{" "}
-                <span className="italic text-orange">Real results.</span>
-              </h2>
-              <p className="eyebrow flex-shrink-0">
-                <span className="eyebrow-mark">✺</span>
-                What clients say
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-5">
-              {testimonials.map((t) => (
-                <figure
-                  key={t.name}
-                  className="bg-white rounded-2xl border border-navy/10 p-7 flex flex-col"
-                >
-                  <span
-                    className="font-eurostile text-orange text-[3rem] leading-none mb-3"
-                    aria-hidden="true"
-                  >
-                    &ldquo;
-                  </span>
-                  <blockquote className="font-exo font-medium text-navy/80 text-[0.95rem] leading-[1.7] mb-6 flex-1">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption>
-                    <p className="font-exo font-extrabold text-orange text-xs tracking-[0.18em] uppercase mb-0.5">
-                      {t.name}
-                    </p>
-                    <p className="font-exo font-medium text-navy/55 text-xs tracking-wide uppercase">
-                      {t.role}
-                    </p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <Testimonials
+              eyebrow="What clients say"
+              heading={
+                <h2 className="h-compact text-navy text-balance">
+                  Real{" "}
+                  <span className="italic text-orange">site owners.</span>{" "}
+                  <span className="italic text-orange">Real results.</span>
+                </h2>
+              }
+            />
           </div>
         </div>
       </section>
@@ -455,7 +404,7 @@ export default function WebDesignPage() {
 
             <h2 className="h-section mb-6">
               <span className="text-white">Let&apos;s build a site that{" "}</span>
-              <span className="italic text-outlined-white">works for you.</span>
+              <span className="italic text-white">works for you.</span>
             </h2>
 
             <p className="body-text body-text-dark mb-9 max-w-[560px] mx-auto">
@@ -465,14 +414,12 @@ export default function WebDesignPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 mb-6">
-              <Link href="/pricing#web-pricing" className="btn btn-primary btn-lg justify-center">
-                See Pricing <span aria-hidden="true">✦</span>
-              </Link>
+              <PrimaryCta size="lg" className="justify-center" />
               <Link
-                href="/contact?service=web"
+                href="/pricing#web-pricing"
                 className="btn btn-lg justify-center border border-white/30 text-white hover:bg-white/10"
               >
-                Talk to a Real Person <span aria-hidden="true">✦</span>
+                See Pricing <span aria-hidden="true">✦</span>
               </Link>
             </div>
 

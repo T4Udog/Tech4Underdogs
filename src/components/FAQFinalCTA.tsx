@@ -12,7 +12,7 @@ export default function FAQFinalCTA() {
 
           <h2 className="h-section mb-6">
             <span className="text-white">Ready to talk? </span>
-            <span className="italic text-outlined-white">We&apos;ll take it</span>
+            <span className="italic text-white">We&apos;ll take it</span>
             <br />
             <span className="text-white">from </span>
             <span className="italic text-orange">there.</span>

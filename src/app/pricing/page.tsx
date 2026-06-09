@@ -251,7 +251,7 @@ export default function PricingPage() {
         <div className="section-container pb-12 lg:pb-16 -mt-2">
           <div className="max-w-[1000px] mx-auto bg-white rounded-2xl shadow-xl border border-navy/10 p-5 lg:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
-              <p className="font-exo font-extrabold text-xs tracking-[0.22em] uppercase text-orange flex-shrink-0 sm:border-r sm:border-navy/10 sm:pr-5">
+              <p className="font-exo font-extrabold text-sm lg:text-base tracking-[0.22em] uppercase text-orange flex-shrink-0 sm:border-r sm:border-navy/10 sm:pr-6">
                 Jump to ↓
               </p>
               <div className="grid sm:grid-cols-3 gap-2 flex-1">
@@ -259,12 +259,12 @@ export default function PricingPage() {
                   <a
                     key={href}
                     href={href}
-                    className="group hover:bg-cream rounded-lg px-3 py-2.5 flex items-center gap-2.5 transition-colors cursor-pointer"
+                    className="group hover:bg-cream rounded-lg px-4 py-3.5 flex items-center gap-3 transition-colors cursor-pointer"
                   >
                     <span className="text-orange flex-shrink-0">
                       <Icon />
                     </span>
-                    <span className="font-eurostile uppercase text-navy text-[0.8rem] tracking-wide flex-1 group-hover:text-orange transition-colors">
+                    <span className="font-eurostile uppercase text-navy text-[1.05rem] lg:text-[1.15rem] tracking-wide flex-1 group-hover:text-orange transition-colors leading-tight">
                       {label}
                     </span>
                     <span className="text-navy/30 group-hover:text-orange transition-colors flex-shrink-0">
@@ -279,7 +279,7 @@ export default function PricingPage() {
       </section>
 
       {/* ── Section 3: IT Pricing ───────────────────────── */}
-      <section id="it-pricing" className="bg-sky scroll-mt-20 overflow-hidden">
+      <section id="it-pricing" className="bg-cream scroll-mt-20 overflow-hidden">
         <div className="section-container section-y">
 
           <div className="max-w-[760px] mb-12">
@@ -291,7 +291,7 @@ export default function PricingPage() {
             <h2 className="h-section text-navy mb-6">
               Protection sized for{" "}
               <span className="italic text-orange">your business</span> —{" "}
-              <span className="italic text-outlined-navy">not an enterprise budget.</span>
+              <span className="italic text-navy">not an enterprise budget.</span>
             </h2>
 
             <p className="body-text mb-3">
@@ -391,7 +391,7 @@ export default function PricingPage() {
               A{" "}
               <span className="italic text-orange">fast, professional</span>{" "}
               website built for{" "}
-              <span className="italic text-outlined-navy">local visibility.</span>
+              <span className="italic text-navy">local visibility.</span>
             </h2>
 
             <p className="body-text">
@@ -481,7 +481,7 @@ export default function PricingPage() {
             <h2 className="h-section text-navy mb-6">
               Local marketing that{" "}
               <span className="italic text-orange">works</span> — without the{" "}
-              <span className="italic text-outlined-navy">agency markup</span>{" "}
+              <span className="italic text-navy">agency markup</span>{" "}
               or the mystery.
             </h2>
 
@@ -570,7 +570,7 @@ export default function PricingPage() {
           <div className="max-w-[860px] mx-auto text-center">
             <p className="h-section">
               <span className="text-white">We{" "}</span>
-              <span className="italic text-outlined-white">don&apos;t charge</span>{" "}
+              <span className="italic text-white">don&apos;t charge</span>{" "}
               <span className="text-white">for things you{" "}</span>
               <span className="italic text-orange">don&apos;t need.</span>
             </p>
@@ -607,7 +607,7 @@ export default function PricingPage() {
               <h2 className="h-section text-navy mb-6">
                 Not sure where to start? That&apos;s exactly what the{" "}
                 <span className="italic text-orange">first conversation</span>{" "}
-                <span className="italic text-outlined-navy">is for.</span>
+                <span className="italic text-navy">is for.</span>
               </h2>
 
               <p className="body-text max-w-[540px] mb-6">
@@ -639,7 +639,7 @@ export default function PricingPage() {
             </p>
 
             <h2 className="h-section mb-6">
-              <span className="italic text-outlined-white">Ready to talk?</span>{" "}
+              <span className="italic text-white">Ready to talk?</span>{" "}
               <span className="text-white">We&apos;ll take it{" "}</span>
               <span className="italic text-orange">from there.</span>
             </h2>

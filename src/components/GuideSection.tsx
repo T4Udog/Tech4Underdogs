@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function GuideSection() {
   return (
-    <section className="bg-sky overflow-hidden relative">
+    <section className="bg-cream overflow-hidden relative">
 
       <div
         className="hidden md:block absolute right-0 top-0 text-orange font-eurostile leading-none select-none pointer-events-none"
@@ -32,7 +32,7 @@ export default function GuideSection() {
               <span className="italic text-orange">exactly</span>
               <br />
               why{" "}
-              <span className="italic text-outlined-navy">we exist.</span>
+              <span className="italic text-navy">we exist.</span>
             </h2>
 
             <p className="body-text max-w-[480px] mb-5">

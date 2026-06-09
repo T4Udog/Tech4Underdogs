@@ -60,16 +60,42 @@
   font-display: swap;
 }
 
+/* Rajdhani — experimental heading font (homepage only for now) */
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/Rajdhani-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/Rajdhani-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/Rajdhani-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Design Tokens ────────────────────────────────────────── */
 
 @theme {
-  --color-orange:  #FF6633;
-  --color-navy:    #1E2A3A;
-  --color-sky:     #CCE1E7;
-  --color-cream:   #F8F0E6;
-  --color-dark:    #111111;
+  --color-orange:    #FF6633;
+  --color-navy:      #1E2A3A;
+  --color-ink-soft:  #2A3A52;   /* lighter navy for stacked dark sections */
+  --color-sky:       #CCE1E7;   /* DEPRECATED — being phased out */
+  --color-cream:     #F8F0E6;
+  --color-cream-deep:#EFE3CD;   /* darker cream — warm light-section contrast */
+  --color-dark:      #111111;
 
   --font-eurostile: 'Eurostile Extended Black', 'Arial Black', sans-serif;
+  --font-rajdhani:  'Rajdhani', 'Helvetica Neue', sans-serif;
   --font-exo:       'Exo', 'Arial', sans-serif;
 }
 
@@ -196,6 +222,7 @@ button:focus-visible {
   line-height: 0.95;
   text-transform: uppercase;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .h-compact {
@@ -203,6 +230,7 @@ button:focus-visible {
   font-size: clamp(1.1rem, 2vw, 1.75rem);
   line-height: 1.05;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 /* Outlined heading text — swap-in for emphasis */
@@ -259,8 +287,52 @@ button:focus-visible {
   font-size: 1rem;
   line-height: 1.75;
   color: rgba(30, 42, 58, 0.75);
+  text-wrap: pretty;
 }
 .body-text-dark { color: rgba(255, 255, 255, 0.75); }
+
+/* ── Rajdhani heading override (scoped via .font-rajdhani wrapper) ──
+   Rajdhani Bold in sentence case. Drops uppercase transform from
+   .h-section / .h-compact / .tagline so source text renders as written
+   (first word cap, rest lowercase). Tighter leading + letter-spacing
+   since Rajdhani's condensed forms read cleanly without breathing room. */
+.font-rajdhani .h-section,
+.font-rajdhani .h-compact,
+.font-rajdhani .tagline,
+.font-rajdhani .font-eurostile {
+  font-family: var(--font-rajdhani) !important;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -0.015em;
+}
+.font-rajdhani .h-section {
+  font-size: clamp(2.1rem, 4.6vw, 4.25rem);
+  line-height: 0.98;
+}
+.font-rajdhani .h-compact {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  line-height: 1.02;
+}
+.font-rajdhani .tagline {
+  font-size: 1.4rem;
+  line-height: 1.15;
+}
+@media (min-width: 1024px) {
+  .font-rajdhani .tagline { font-size: 1.65rem; }
+}
+/* Outlined-italic variants need thicker stroke for condensed Rajdhani */
+.font-rajdhani .text-outlined-navy,
+.font-rajdhani .text-outlined-white,
+.font-rajdhani .text-outlined-orange {
+  -webkit-text-stroke-width: 1.5px;
+}
+@media (min-width: 1024px) {
+  .font-rajdhani .text-outlined-navy,
+  .font-rajdhani .text-outlined-white,
+  .font-rajdhani .text-outlined-orange {
+    -webkit-text-stroke-width: 2px;
+  }
+}
 
 /* Tagline (Eurostile, smaller, end-of-section emphasis) */
 .tagline {
@@ -285,10 +357,13 @@ button:focus-visible {
   text-transform: uppercase;
   border-radius: 0.375rem;
   cursor: pointer;
-  transition: background-color 150ms ease, color 150ms ease;
+  transition: background-color 200ms ease, color 200ms ease, transform 150ms ease, box-shadow 200ms ease;
   min-height: 44px;
   padding: 0.875rem 1.5rem;
 }
+.btn:active { transform: scale(0.98); }
+.btn-primary:hover { box-shadow: 0 6px 20px -8px rgba(255, 102, 51, 0.55); }
+.btn-secondary:hover { box-shadow: 0 6px 20px -8px rgba(30, 42, 58, 0.55); }
 .btn-sm { padding: 0.75rem 1.25rem; }
 .btn-lg { padding: 1rem 2rem; }
 

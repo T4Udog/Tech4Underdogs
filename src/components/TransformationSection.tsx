@@ -30,7 +30,7 @@ export default function TransformationSection() {
               {" "}stops
               <br />
               being the{" "}
-              <span className="italic text-outlined-navy">problem.</span>
+              <span className="italic text-navy">problem.</span>
             </h2>
 
             <p className="body-text max-w-[460px] mb-8">

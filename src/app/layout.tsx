@@ -21,7 +21,7 @@ export default function RootLayout({
       <body>
         <MarqueeBanner />
         <Navbar />
-        <main>{children}</main>
+        <main className="font-rajdhani">{children}</main>
         <Footer />
       </body>
     </html>

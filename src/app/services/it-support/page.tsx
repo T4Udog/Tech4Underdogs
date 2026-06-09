@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Testimonials from "@/components/sections/Testimonials";
+import { PrimaryCta, SecondaryCta } from "@/components/PrimaryCta";
 
 export const metadata: Metadata = {
   title: "IT Support & Security | Tech 4 Underdogs",
@@ -93,26 +95,6 @@ const inclusions = [
   "Quarterly system health reviews",
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Before Tech 4 Underdogs, I was constantly putting out fires. Now my systems just work. I don't think about it anymore.",
-    name: "Sarah M.",
-    role: "Local Retail Owner",
-  },
-  {
-    quote:
-      "I've worked with bigger IT firms and felt completely ignored. These guys actually pick up the phone.",
-    name: "James T.",
-    role: "Service Business Owner",
-  },
-  {
-    quote:
-      "I didn't know how exposed my business was until they did a review. Now I actually feel protected.",
-    name: "Maria R.",
-    role: "Small Business Owner",
-  },
-];
 
 /* ── Page ──────────────────────────────────────────────────── */
 
@@ -156,12 +138,8 @@ export default function ITSupportPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-                <Link href="/contact?service=it" className="btn btn-primary justify-center sm:justify-start">
-                  Talk to a Real Person <span aria-hidden="true">✦</span>
-                </Link>
-                <Link href="#what-we-do" className="btn btn-secondary justify-center sm:justify-start">
-                  See How We Help <span aria-hidden="true">✦</span>
-                </Link>
+                <PrimaryCta className="justify-center sm:justify-start" />
+                <SecondaryCta className="justify-center sm:justify-start" href="#what-we-do" />
               </div>
             </div>
 
@@ -194,7 +172,7 @@ export default function ITSupportPage() {
               <h2 className="h-section text-navy mb-7">
                 When you&apos;re running lean,{" "}
                 <span className="italic text-orange">every disruption</span>{" "}
-                <span className="italic text-outlined-navy">hits harder.</span>
+                <span className="italic text-navy">hits harder.</span>
               </h2>
 
               <p className="body-text">
@@ -259,7 +237,7 @@ export default function ITSupportPage() {
               </p>
               <p className="h-section">
                 <span className="text-white">Small businesses deserve the{" "}</span>
-                <span className="italic text-outlined-white">same protection</span>{" "}
+                <span className="italic text-white">same protection</span>{" "}
                 <span className="text-white">as large ones — at a{" "}</span>
                 <span className="italic text-orange">price that makes sense.</span>
               </p>
@@ -282,7 +260,7 @@ export default function ITSupportPage() {
               <h2 className="h-section text-navy mb-7">
                 Straightforward IT support that keeps your business{" "}
                 <span className="italic text-orange">protected</span>{" "}
-                <span className="italic text-outlined-navy">and running.</span>
+                <span className="italic text-navy">and running.</span>
               </h2>
 
               <p className="body-text mb-6">
@@ -339,7 +317,7 @@ export default function ITSupportPage() {
                   Everything a{" "}
                   <span className="italic text-orange">small business</span>{" "}
                   IT department would do —{" "}
-                  <span className="italic text-outlined-navy">without the overhead.</span>
+                  <span className="italic text-navy">without the overhead.</span>
                 </h2>
               </div>
               <Link
@@ -389,7 +367,7 @@ export default function ITSupportPage() {
 
               <h2 className="h-section text-navy mb-6">
                 You&apos;ve got{" "}
-                <span className="italic text-outlined-navy">enough to manage.</span>{" "}
+                <span className="italic text-navy">enough to manage.</span>{" "}
                 Your IT shouldn&apos;t be{" "}
                 <span className="italic text-orange">one of them.</span>
               </h2>
@@ -411,49 +389,10 @@ export default function ITSupportPage() {
       </section>
 
       {/* ── 7. Testimonials ─────────────────────────────── */}
-      <section className="bg-sky overflow-hidden">
+      <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">
           <div className="max-w-[1100px] mx-auto">
-
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-              <h2 className="h-compact text-navy">
-                What{" "}
-                <span className="italic text-outlined-orange">small business</span>{" "}
-                owners{" "}
-                <span className="italic text-orange">say.</span>
-              </h2>
-              <p className="eyebrow flex-shrink-0">
-                <span className="eyebrow-mark">✺</span>
-                Real words from real owners
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-5">
-              {testimonials.map((t) => (
-                <figure
-                  key={t.name}
-                  className="bg-white rounded-2xl border border-navy/10 p-7 flex flex-col"
-                >
-                  <span
-                    className="font-eurostile text-orange text-[3rem] leading-none mb-3"
-                    aria-hidden="true"
-                  >
-                    &ldquo;
-                  </span>
-                  <blockquote className="font-exo font-medium text-navy/80 text-[0.95rem] leading-[1.7] mb-6 flex-1">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption>
-                    <p className="font-exo font-extrabold text-orange text-xs tracking-[0.18em] uppercase mb-0.5">
-                      {t.name}
-                    </p>
-                    <p className="font-exo font-medium text-navy/55 text-xs tracking-wide uppercase">
-                      {t.role}
-                    </p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <Testimonials />
           </div>
         </div>
       </section>
@@ -474,7 +413,7 @@ export default function ITSupportPage() {
 
               <h2 className="h-section mb-6">
                 <span className="text-white">Tell us a little about your{" "}</span>
-                <span className="italic text-outlined-white">business.</span>
+                <span className="italic text-white">business.</span>
                 <br />
                 <span className="text-white">We&apos;ll guide you to the{" "}</span>
                 <span className="italic text-orange">right solutions.</span>
@@ -538,12 +477,7 @@ export default function ITSupportPage() {
                 </div>
               </div>
 
-              <Link
-                href="/contact?service=it"
-                className="btn btn-primary btn-lg justify-center w-full mt-2"
-              >
-                Talk to a Real Person <span aria-hidden="true">✦</span>
-              </Link>
+              <PrimaryCta size="lg" className="justify-center w-full mt-2" />
 
               <p className="font-exo font-semibold text-white/55 text-[0.7rem] tracking-[0.2em] uppercase text-center">
                 We respond within one business day.

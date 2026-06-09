@@ -64,7 +64,8 @@ export default function ProblemSection() {
               alt="Archie surrounded by tech problems — broken monitors, notifications, and a 404 error"
               width={580}
               height={540}
-              loading="lazy"
+              priority
+              sizes="(min-width: 1024px) 580px, 100vw"
               className="w-full h-auto object-contain"
             />
           </div>
@@ -78,7 +79,7 @@ export default function ProblemSection() {
 
             <h2 className="h-section mb-7">
               <span className="text-white">You handle </span>
-              <span className="italic text-outlined-white">everything.</span>
+              <span className="italic text-white">everything.</span>
               <br />
               <span className="italic text-orange">Your tech shouldn&apos;t</span>
               <br />

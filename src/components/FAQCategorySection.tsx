@@ -18,7 +18,7 @@ type Props = {
 
 const bgClass = {
   white: "bg-white",
-  sky: "bg-sky",
+  sky: "bg-cream",
   cream: "bg-cream",
 };
 

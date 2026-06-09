@@ -1,33 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Testimonials from "@/components/sections/Testimonials";
+import { PrimaryCta, SecondaryCta } from "@/components/PrimaryCta";
 
 export const metadata: Metadata = {
   title: "About | Tech 4 Underdogs",
   description:
     "Tech 4 Underdogs was built for small businesses the big firms overlook. 30+ years of combined experience in IT, web, and marketing — put to work for the businesses that need it most.",
 };
-
-const testimonials = [
-  {
-    quote:
-      "I've worked with IT firms that made me feel like a nuisance. These guys make me feel like a priority. I don't know what I'd do without them at this point.",
-    name: "Carol T.",
-    role: "Local Service Business",
-  },
-  {
-    quote:
-      "When I needed my website fixed, I wasn't handed off to a junior developer I'd never talked to. The same people who built it fixed it. That matters.",
-    name: "James W.",
-    role: "Small Retail Owner",
-  },
-  {
-    quote:
-      "They didn't try to sell me things I didn't need. They looked at what I had, told me what actually needed attention, and got to work. Refreshing.",
-    name: "Donna R.",
-    role: "Independent Business Owner",
-  },
-];
 
 const features = [
   {
@@ -122,12 +103,8 @@ export default function AboutPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-                <Link href="/#contact" className="btn btn-primary justify-center sm:justify-start">
-                  Talk to a Real Person <span aria-hidden="true">✦</span>
-                </Link>
-                <Link href="/#services" className="btn btn-secondary justify-center sm:justify-start">
-                  See How We Help <span aria-hidden="true">✦</span>
-                </Link>
+                <PrimaryCta className="justify-center sm:justify-start" />
+                <SecondaryCta className="justify-center sm:justify-start" href="/#services" />
               </div>
             </div>
 
@@ -158,7 +135,7 @@ export default function AboutPage() {
         </div>
 
         <div className="section-container section-y relative z-10">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 lg:items-center">
 
             <div>
               <p className="eyebrow mb-5">
@@ -170,7 +147,7 @@ export default function AboutPage() {
                 Most tech companies aren&apos;t built for{" "}
                 <span className="italic text-orange">small businesses.</span>
                 <br />
-                <span className="italic text-outlined-navy">We are.</span>
+                <span className="italic text-navy">We are.</span>
               </h2>
 
               <p className="body-text">
@@ -181,21 +158,21 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <aside className="lg:pl-8 lg:border-l-4 lg:border-orange relative">
+            <aside className="lg:pl-8 lg:border-l-4 lg:border-orange relative lg:max-w-[520px]">
               <span
                 className="hidden lg:block absolute -left-3 top-0 text-orange font-eurostile text-[2.5rem] leading-none bg-white px-1"
                 aria-hidden="true"
               >
                 &ldquo;
               </span>
-              <p className="font-eurostile uppercase text-navy text-[1.15rem] sm:text-[1.3rem] lg:text-[1.45rem] leading-[1.4] mb-5">
+              <p className="font-eurostile uppercase text-navy text-[1.4rem] sm:text-[1.55rem] lg:text-[1.7rem] leading-[1.25] mb-6 text-balance">
                 Small businesses are the{" "}
                 <span className="italic text-orange">backbone</span>{" "}
                 of local communities — and they deserve partners that take
                 their needs{" "}
-                <span className="italic text-outlined-navy">as seriously as they do.</span>
+                <span className="italic text-navy">as seriously as they do.</span>
               </p>
-              <p className="font-exo font-medium text-navy/65 text-[0.95rem] leading-[1.7]">
+              <p className="font-exo font-medium text-navy/65 text-[0.95rem] leading-[1.7] text-pretty">
                 We started Tech 4 Underdogs because that gap was too big to
                 ignore. Same team, same care, every project — built around
                 what actually moves the needle for the people doing the work.
@@ -264,7 +241,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Section 4: Positioning + Feature cards ──────── */}
-      <section className="bg-sky overflow-hidden">
+      <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16">
 
@@ -276,7 +253,7 @@ export default function AboutPage() {
 
               <h2 className="h-section text-navy mb-7">
                 We don&apos;t serve{" "}
-                <span className="italic text-outlined-navy">everyone.</span>
+                <span className="italic text-navy">everyone.</span>
                 <br />
                 We serve the ones the big firms{" "}
                 <span className="italic text-orange">overlook.</span>
@@ -360,7 +337,7 @@ export default function AboutPage() {
                 <span className="italic text-orange">three things</span>{" "}
                 seriously.
                 <br />
-                <span className="italic text-outlined-navy">Everything else follows.</span>
+                <span className="italic text-navy">Everything else follows.</span>
               </h2>
 
               <p className="tagline text-navy">
@@ -376,46 +353,7 @@ export default function AboutPage() {
       <section className="bg-white overflow-hidden">
         <div className="section-container section-y">
           <div className="max-w-[1100px] mx-auto">
-
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-              <h2 className="h-compact text-navy">
-                What{" "}
-                <span className="italic text-outlined-orange">small business</span>{" "}
-                owners{" "}
-                <span className="italic text-orange">say.</span>
-              </h2>
-              <p className="eyebrow flex-shrink-0">
-                <span className="eyebrow-mark">✺</span>
-                Real words from real owners
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-5">
-              {testimonials.map((t) => (
-                <figure
-                  key={t.name}
-                  className="bg-cream rounded-2xl border border-navy/10 p-7 flex flex-col"
-                >
-                  <span
-                    className="font-eurostile text-orange text-[3rem] leading-none mb-3"
-                    aria-hidden="true"
-                  >
-                    &ldquo;
-                  </span>
-                  <blockquote className="font-exo font-medium text-navy/80 text-[0.95rem] leading-[1.7] mb-6 flex-1">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption>
-                    <p className="font-exo font-extrabold text-orange text-xs tracking-[0.18em] uppercase mb-0.5">
-                      {t.name}
-                    </p>
-                    <p className="font-exo font-medium text-navy/55 text-xs tracking-wide uppercase">
-                      {t.role}
-                    </p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <Testimonials />
           </div>
         </div>
       </section>
@@ -434,7 +372,7 @@ export default function AboutPage() {
 
             <h2 className="h-section mb-6">
               <span className="text-white">If you&apos;re tired of vendors who don&apos;t </span>
-              <span className="italic text-outlined-white">show up,</span>
+              <span className="italic text-white">show up,</span>
               <br />
               <span className="text-white">let&apos;s </span>
               <span className="italic text-orange">talk.</span>
@@ -447,9 +385,7 @@ export default function AboutPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 mb-6">
-              <Link href="/#contact" className="btn btn-primary btn-lg justify-center">
-                Talk to a Real Person <span aria-hidden="true">✦</span>
-              </Link>
+              <PrimaryCta size="lg" className="justify-center" />
               <Link
                 href="/#services"
                 className="btn btn-lg justify-center border border-white/30 text-white hover:bg-white/10"
