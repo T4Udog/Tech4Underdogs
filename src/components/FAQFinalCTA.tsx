@@ -4,24 +4,22 @@ export default function FAQFinalCTA() {
   return (
     <section className="bg-teal-gradient overflow-hidden">
       <div className="section-container section-y">
-        <div className="max-w-[760px] mx-auto text-center">
+        <div className="max-w-[820px] mx-auto text-center">
           <p className="eyebrow eyebrow-dark mb-5 justify-center inline-flex">
             <span className="eyebrow-mark">✺</span>
             Ready when you are
           </p>
 
           <h2 className="h-section mb-6">
-            <span className="text-white">Ready to talk? </span>
-            <span className="italic text-white">We&apos;ll take it</span>
-            <br />
-            <span className="text-white">from </span>
-            <span className="italic text-orange">there.</span>
+            <span className="text-white">Still have questions? </span>
+            <span className="italic text-orange">That&apos;s what the first conversation is for.</span>
           </h2>
 
-          <p className="body-text body-text-dark max-w-[560px] mx-auto mb-9">
-            No commitment. No sales pressure. Just a real conversation about
-            your technology, your website, or your marketing — and whether
-            we&apos;re the right fit.
+          <p className="body-text body-text-dark max-w-[620px] mx-auto mb-9">
+            We don&apos;t start with a pitch. We start by understanding your
+            business, what&apos;s working, and what isn&apos;t — a
+            straightforward conversation with someone who already knows the
+            terrain.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

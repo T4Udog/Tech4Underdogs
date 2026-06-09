@@ -213,10 +213,10 @@ export default function PricingPage() {
               {/* Mobile Archie */}
               <div className="lg:hidden flex justify-center mb-8">
                 <Image
-                  src="/images/Archie-Capable.png"
-                  alt="Archie, the Tech 4 Underdogs mascot"
-                  width={560}
-                  height={520}
+                  src="/images/Archie-Pricing.png"
+                  alt="Archie reviewing pricing"
+                  width={620}
+                  height={626}
                   priority
                   className="w-full max-w-[300px] sm:max-w-[360px] h-auto object-contain"
                 />
@@ -234,12 +234,12 @@ export default function PricingPage() {
             {/* Desktop Archie */}
             <div className="hidden lg:flex justify-end">
               <Image
-                src="/images/Archie-Capable.png"
-                alt="Archie, the Tech 4 Underdogs mascot"
-                width={560}
-                height={520}
+                src="/images/Archie-Pricing.png"
+                alt="Archie reviewing pricing"
+                width={620}
+                height={626}
                 priority
-                className="w-full max-w-[380px] h-auto object-contain"
+                className="w-full max-w-[400px] xl:max-w-[440px] h-auto object-contain"
               />
             </div>
           </div>
@@ -548,7 +548,7 @@ export default function PricingPage() {
               <p className="font-exo font-extrabold text-orange text-xs tracking-[0.22em] uppercase mb-2">
                 Not sure where to start?
               </p>
-              <p className="font-eurostile text-white uppercase text-[1.15rem] lg:text-[1.35rem] tracking-wide leading-[1.2]">
+              <p className="font-eurostile text-white uppercase text-[1.5rem] lg:text-[1.85rem] tracking-wide leading-[1.15]">
                 Every engagement starts with a{" "}
                 <span className="italic text-orange">scoping conversation</span>{" "}
                 — no contracts, just clarity.
@@ -565,16 +565,16 @@ export default function PricingPage() {
       </section>
 
       {/* ── Section 6: Proof bar ────────────────────────── */}
-      <section className="bg-teal-gradient overflow-hidden">
+      <section className="bg-cream overflow-hidden">
         <div className="section-container py-16 lg:py-24">
           <div className="max-w-[860px] mx-auto text-center">
             <p className="h-section">
-              <span className="text-white">We{" "}</span>
-              <span className="italic text-white">don&apos;t charge</span>{" "}
-              <span className="text-white">for things you{" "}</span>
-              <span className="italic text-orange">don&apos;t need.</span>
+              <span className="text-navy">We{" "}</span>
+              <span className="italic text-orange">don&apos;t charge</span>{" "}
+              <span className="text-navy">for things you{" "}</span>
+              <span className="italic text-outlined-navy">don&apos;t need.</span>
             </p>
-            <p className="body-text body-text-dark max-w-[640px] mx-auto mt-6">
+            <p className="body-text max-w-[640px] mx-auto mt-6">
               Every package is built around what small businesses actually use
               — and what they can actually afford.
             </p>
@@ -582,71 +582,29 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── Section 7: Reassurance ──────────────────────── */}
-      <section className="bg-cream overflow-hidden">
-        <div className="section-container section-y">
-          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-16 items-center max-w-[1100px] mx-auto">
-
-            <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-              <Image
-                src="/images/Archie-On-Your-Side.png"
-                alt="Archie calm and ready to help"
-                width={500}
-                height={500}
-                loading="lazy"
-                className="w-full max-w-[320px] lg:max-w-[380px] h-auto object-contain"
-              />
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <p className="eyebrow mb-5">
-                <span className="eyebrow-mark">✺</span>
-                No pressure. Just clarity.
-              </p>
-
-              <h2 className="h-section text-navy mb-6">
-                Not sure where to start? That&apos;s exactly what the{" "}
-                <span className="italic text-orange">first conversation</span>{" "}
-                <span className="italic text-navy">is for.</span>
-              </h2>
-
-              <p className="body-text max-w-[540px] mb-6">
-                A lot of small business owners come to us having been oversold,
-                overcharged, or just ignored. We don&apos;t start with a pitch.
-                We start by understanding what you&apos;re dealing with and
-                what actually makes sense for your business.
-              </p>
-
-              <p className="tagline text-navy">
-                No pressure.{" "}
-                <span className="italic text-orange">Watching your back from day one.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 8: Final CTA ────────────────────────── */}
+      {/* ── Section 7: Final CTA (merged reassurance + CTA) ── */}
       <section
         id="pricing-cta"
         className="section-y scroll-mt-20 overflow-hidden bg-teal-gradient"
       >
         <div className="section-container">
-          <div className="max-w-[760px] mx-auto text-center">
+          <div className="max-w-[860px] mx-auto text-center">
             <p className="eyebrow eyebrow-dark mb-5 justify-center">
               <span className="eyebrow-mark">✺</span>
-              Let&apos;s have a real conversation
+              No pressure. Just clarity.
             </p>
 
             <h2 className="h-section mb-6">
-              <span className="italic text-white">Ready to talk?</span>{" "}
-              <span className="text-white">We&apos;ll take it{" "}</span>
-              <span className="italic text-orange">from there.</span>
+              <span className="text-white">Not sure where to start? That&apos;s exactly what the </span>
+              <span className="italic text-orange">first conversation</span>
+              <span className="text-white"> is for.</span>
             </h2>
 
-            <p className="body-text body-text-dark mb-9 max-w-[520px] mx-auto">
-              No commitment. No sales pressure. Just a real conversation
-              about whether we&apos;re the right fit to help.
+            <p className="body-text body-text-dark mb-9 max-w-[620px] mx-auto">
+              A lot of small business owners come to us having been oversold,
+              overcharged, or just ignored. We don&apos;t start with a pitch —
+              we start by understanding what you&apos;re dealing with and what
+              actually makes sense for your business.
             </p>
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 mb-6">

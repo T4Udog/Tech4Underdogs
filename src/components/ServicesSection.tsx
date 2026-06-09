@@ -34,40 +34,25 @@ export default function ServicesSection() {
     >
       <div className="section-container section-y relative z-10">
 
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-14 lg:mb-16">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12 lg:items-end mb-10 lg:mb-12">
           <div>
-            <p className="eyebrow eyebrow-dark mb-5">
+            <p className="eyebrow eyebrow-dark mb-4">
               <span className="eyebrow-mark">✺</span>
               The solution
             </p>
 
-            <h2 className="h-section mb-5">
-              <span className="text-white">One partner.</span>
-              <br />
-              <span className="italic text-orange">Three things</span>
-              <br />
+            <h2 className="h-section">
+              <span className="text-white">One partner. </span>
+              <span className="italic text-orange">Three things</span>{" "}
               <span className="italic text-white">done right.</span>
             </h2>
-
-            <p className="body-text body-text-dark max-w-[520px]">
-              Instead of juggling vendors and chasing callbacks, you get one
-              accountable team that understands your business — and stays with you
-              for the long haul.
-            </p>
           </div>
 
-          <div className="hidden lg:flex flex-col items-center justify-center flex-shrink-0 text-center">
-            <p
-              className="font-eurostile uppercase leading-[1]"
-              style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.65rem)" }}
-            >
-              <span className="text-white">The basics,</span>
-              <br />
-              <span className="italic text-orange border-2 border-orange/70 rounded-full px-4 py-0.5 inline-block mt-1">
-                done right.
-              </span>
-            </p>
-          </div>
+          <p className="body-text body-text-dark max-w-[560px]">
+            Instead of juggling vendors and chasing callbacks, you get one
+            accountable team that understands your business — and stays with
+            you for the long haul.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
@@ -107,16 +92,16 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        <div className="bg-white/10 border border-white/15 rounded-2xl px-6 py-5 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-center sm:text-left">
-          <p className="font-eurostile uppercase text-white text-[0.95rem] lg:text-[1.05rem] tracking-wide leading-tight text-balance">
+        <div className="bg-white/10 border border-white/15 rounded-2xl px-6 py-5 lg:px-8 lg:py-6 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-center sm:text-left">
+          <p className="font-eurostile uppercase text-white text-[1.15rem] lg:text-[1.35rem] tracking-wide leading-tight text-balance">
             <span className="italic text-orange">{site.pricing.startingPrice}</span>{" "}
             — month-to-month, no long-term contracts.
           </p>
           <Link
             href={site.pricing.href}
-            className="font-exo font-extrabold text-xs tracking-[0.18em] uppercase text-orange hover:text-white transition-colors inline-flex items-center gap-2 flex-shrink-0 cursor-pointer"
+            className="btn btn-sm bg-white text-navy hover:bg-cream flex-shrink-0 justify-center"
           >
-            See Pricing <span aria-hidden="true">→</span>
+            See Pricing <span aria-hidden="true">✦</span>
           </Link>
         </div>
 

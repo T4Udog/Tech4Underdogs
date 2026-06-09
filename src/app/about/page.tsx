@@ -86,10 +86,10 @@ export default function AboutPage() {
               {/* Mobile-only Archie */}
               <div className="lg:hidden flex justify-center mb-8">
                 <Image
-                  src="/images/Archie-Toolbelt-e1773949293728.png"
-                  alt="Archie, the Tech 4 Underdogs mascot"
-                  width={560}
-                  height={620}
+                  src="/images/Archie-Small-Business.png"
+                  alt="Archie, the Tech 4 Underdogs mascot for small business"
+                  width={620}
+                  height={626}
                   priority
                   className="w-full max-w-[280px] sm:max-w-[340px] h-auto object-contain"
                 />
@@ -111,12 +111,12 @@ export default function AboutPage() {
             {/* Desktop Archie */}
             <div className="hidden lg:flex justify-end">
               <Image
-                src="/images/Archie-Toolbelt-e1773949293728.png"
-                alt="Archie, the Tech 4 Underdogs mascot"
-                width={560}
-                height={620}
+                src="/images/Archie-Small-Business.png"
+                alt="Archie, the Tech 4 Underdogs mascot for small business"
+                width={620}
+                height={626}
                 priority
-                className="w-full max-w-[380px] h-auto object-contain"
+                className="w-full max-w-[400px] xl:max-w-[440px] h-auto object-contain"
               />
             </div>
           </div>
@@ -214,15 +214,15 @@ export default function AboutPage() {
                 ].map((s) => (
                   <div
                     key={s.label}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 lg:p-5"
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-5 lg:p-6"
                   >
-                    <p className="font-eurostile text-orange text-[1.5rem] lg:text-[2rem] leading-none mb-2 tabular-nums">
+                    <p className="font-eurostile text-orange text-[1.85rem] lg:text-[2.4rem] leading-none mb-3 tabular-nums">
                       {s.stat}
                     </p>
-                    <p className="font-exo font-extrabold text-white text-[0.7rem] lg:text-[0.75rem] tracking-[0.14em] uppercase mb-1 leading-tight">
+                    <p className="font-exo font-extrabold text-white text-[0.85rem] lg:text-[0.95rem] tracking-[0.14em] uppercase mb-1.5 leading-tight">
                       {s.label}
                     </p>
-                    <p className="font-exo font-medium text-white/55 text-[0.7rem] leading-[1.45]">
+                    <p className="font-exo font-medium text-white/65 text-[0.85rem] leading-[1.5]">
                       {s.sub}
                     </p>
                   </div>
@@ -243,7 +243,7 @@ export default function AboutPage() {
       {/* ── Section 4: Positioning + Feature cards ──────── */}
       <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">
-          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16">
+          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 lg:items-center">
 
             <div>
               <p className="eyebrow mb-5">
@@ -283,10 +283,10 @@ export default function AboutPage() {
                     {f.icon}
                   </div>
                   <div>
-                    <h3 className="font-eurostile uppercase text-navy text-[0.95rem] tracking-wide mb-2">
+                    <h3 className="font-eurostile uppercase text-navy text-[1.15rem] lg:text-[1.25rem] tracking-wide mb-2 leading-tight">
                       {f.title}
                     </h3>
-                    <p className="font-exo font-medium text-navy/70 text-[0.92rem] leading-[1.65]">
+                    <p className="font-exo font-medium text-navy/70 text-[0.95rem] leading-[1.65]">
                       {f.description}
                     </p>
                   </div>
@@ -300,7 +300,7 @@ export default function AboutPage() {
       {/* ── Section 5: Values (flipped — zigzag) ────────── */}
       <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 lg:items-center">
 
             {/* Values list — now LEFT */}
             <ul className="flex flex-col gap-6 order-2 lg:order-1">
@@ -310,13 +310,13 @@ export default function AboutPage() {
                   className="flex gap-5 bg-white/60 backdrop-blur-sm rounded-2xl border border-navy/10 p-5 lg:p-6"
                 >
                   <span
-                    className="font-eurostile text-orange text-[2rem] leading-none tabular-nums flex-shrink-0 mt-1"
+                    className="font-eurostile text-orange text-[2.25rem] leading-none tabular-nums flex-shrink-0 mt-1"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="font-eurostile uppercase text-navy text-[1.05rem] mb-2 tracking-wide">
+                    <h3 className="font-eurostile uppercase text-navy text-[1.25rem] lg:text-[1.4rem] mb-2 tracking-wide leading-tight">
                       {v.title}
                     </h3>
                     <p className="body-text">{v.body}</p>
@@ -325,8 +325,8 @@ export default function AboutPage() {
               ))}
             </ul>
 
-            {/* Heading column — now RIGHT, sticky on lg */}
-            <div className="order-1 lg:order-2 lg:sticky lg:top-28">
+            {/* Heading column — now RIGHT */}
+            <div className="order-1 lg:order-2">
               <p className="eyebrow mb-5">
                 <span className="eyebrow-mark">✺</span>
                 How we work

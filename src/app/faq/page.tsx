@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import FAQHero from "@/components/FAQHero";
 import FAQCategorySection, { type FAQItem } from "@/components/FAQCategorySection";
-import FAQReassurance from "@/components/FAQReassurance";
 import FAQFinalCTA from "@/components/FAQFinalCTA";
 
 export const metadata: Metadata = {
@@ -159,7 +158,6 @@ export default function FAQPage() {
         secondaryCta={{ label: "See Pricing", href: "/#services" }}
       />
 
-      <FAQReassurance />
       <FAQFinalCTA />
     </>
   );

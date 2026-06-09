@@ -56,7 +56,7 @@ export default function ContactHero() {
               width={620}
               height={620}
               priority
-              className="w-full max-w-[420px] xl:max-w-[470px] h-auto object-contain"
+              className="w-full max-w-[490px] xl:max-w-[550px] h-auto object-contain"
             />
           </div>
         </div>

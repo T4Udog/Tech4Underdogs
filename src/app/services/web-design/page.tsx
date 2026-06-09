@@ -124,10 +124,10 @@ export default function WebDesignPage() {
               {/* Mobile Archie */}
               <div className="lg:hidden flex justify-center mb-8">
                 <Image
-                  src="/images/Archie-Toolbelt-e1773949293728.png"
-                  alt="Archie ready to build"
-                  width={560}
-                  height={620}
+                  src="/images/Archie-Website.png"
+                  alt="Archie building a website"
+                  width={620}
+                  height={626}
                   priority
                   className="w-full max-w-[280px] sm:max-w-[340px] h-auto object-contain"
                 />
@@ -149,12 +149,12 @@ export default function WebDesignPage() {
             {/* Desktop Archie */}
             <div className="hidden lg:flex justify-end">
               <Image
-                src="/images/Archie-Toolbelt-e1773949293728.png"
-                alt="Archie ready to build"
-                width={560}
-                height={620}
+                src="/images/Archie-Website.png"
+                alt="Archie building a website"
+                width={620}
+                height={626}
                 priority
-                className="w-full max-w-[380px] h-auto object-contain"
+                className="w-full max-w-[460px] xl:max-w-[520px] h-auto object-contain"
               />
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function WebDesignPage() {
       {/* ── 4 + 5. What We Do + Feature Grid ────────────── */}
       <section id="what-we-do" className="bg-cream scroll-mt-20 overflow-hidden">
         <div className="section-container section-y">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 lg:items-center">
 
             <div>
               <p className="eyebrow mb-5">
@@ -272,10 +272,10 @@ export default function WebDesignPage() {
                     <Icon />
                   </div>
                   <div>
-                    <h3 className="font-eurostile uppercase text-navy text-[1rem] tracking-wide mb-2">
+                    <h3 className="font-eurostile uppercase text-navy text-[1.2rem] lg:text-[1.3rem] tracking-wide mb-2 leading-tight">
                       {title}
                     </h3>
-                    <p className="font-exo font-medium text-navy/70 text-[0.92rem] leading-[1.65]">
+                    <p className="font-exo font-medium text-navy/70 text-[0.95rem] leading-[1.65]">
                       {description}
                     </p>
                   </div>

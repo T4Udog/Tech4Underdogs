@@ -56,7 +56,7 @@ export default function HeroSection() {
           </div>
 
           {/* ── Right col ───────────────────────────────── */}
-          <div className="hidden lg:flex flex-col items-end lg:w-[320px] xl:w-[360px] self-center relative">
+          <div className="hidden lg:flex flex-col items-end lg:w-[400px] xl:w-[460px] self-center relative">
             <div className="relative z-10 w-full">
               <Image
                 src="/images/Archie-Toolbelt-e1773949293728.png"

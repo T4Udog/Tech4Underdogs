@@ -248,7 +248,7 @@ export default function ContactFormSection() {
                     />
                   </div>
                   <div className="flex-1">
-                    <p className="font-eurostile uppercase text-navy text-[0.9rem] tracking-wide group-hover:text-orange transition-colors leading-tight">
+                    <p className="font-eurostile uppercase text-navy text-[1.15rem] lg:text-[1.25rem] tracking-wide group-hover:text-orange transition-colors leading-tight">
                       {s.title}
                     </p>
                   </div>
