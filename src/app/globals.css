@@ -168,6 +168,27 @@ main {
   }
 }
 
+@keyframes scorecard-question-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scorecard-question-enter {
+  animation: scorecard-question-enter 500ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scorecard-question-enter {
+    animation: none;
+  }
+}
+
 /* ── Accordion ────────────────────────────────────────────── */
 
 .faq-panel {
@@ -383,4 +404,3 @@ button:focus-visible {
 .bg-teal-gradient {
   background: linear-gradient(175deg, #1e7890 0%, #0d5068 35%, #073a4f 70%, #052b3a 100%);
 }
-
