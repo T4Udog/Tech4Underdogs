@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tech4underdogs-dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "port": 3000
+    },
+    {
+      "name": "cf-worker",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["cf:preview"],
+      "port": 8787
+    }
+  ]
+}

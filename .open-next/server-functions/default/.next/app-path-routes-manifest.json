@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/api/contact/route": "/api/contact",
+  "/api/scorecard/submit/route": "/api/scorecard/submit",
+  "/contact/page": "/contact",
+  "/faq/page": "/faq",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/pricing/page": "/pricing",
+  "/scorecard/page": "/scorecard",
+  "/services/it-support/page": "/services/it-support",
+  "/services/marketing/page": "/services/marketing",
+  "/services/web-design/page": "/services/web-design"
+}

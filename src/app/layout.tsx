@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,6 +20,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WTGFXYG1SK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-WTGFXYG1SK');
+          `}
+        </Script>
         <MarqueeBanner />
         <Navbar />
         <main className="font-rajdhani">{children}</main>
@@ -27,3 +41,4 @@ export default function RootLayout({
     </html>
   );
 }
+

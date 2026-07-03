@@ -37,6 +37,7 @@ const navLinks: NavLink[] = [
     ],
   },
   { label: "Pricing", href: "/pricing" },
+  { label: "Scorecard", href: "/scorecard" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];

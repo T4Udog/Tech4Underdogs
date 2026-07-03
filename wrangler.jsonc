@@ -1,0 +1,37 @@
+/**
+ * Cloudflare Workers config — Tech 4 Underdogs site.
+ * Built with @opennextjs/cloudflare. Run `pnpm cf:build` to produce .open-next/
+ * then `pnpm cf:preview` (local) or `pnpm cf:deploy` (prod).
+ *
+ * Secrets are NOT in this file — set via `wrangler secret put NAME`.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tech4underdogs",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-06-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+
+  "workers_dev": true,
+  "preview_urls": true,
+
+  "observability": { "enabled": true },
+
+  /**
+   * Public, build-time env vars only. Secrets (Supabase keys, Resend key)
+   * go through `wrangler secret put` — do not paste here.
+   */
+  "vars": {
+    "NEXT_PUBLIC_CAL_COM_URL": "https://cal.com/tech-4-underdogs/15min",
+    "PDF_SERVICE_URL": "https://scorecard-pdf-service-production.up.railway.app",
+    "RESEND_FROM": "Tech 4 Underdogs <info@tech4underdogs.com>",
+    "INTERNAL_NOTIFY_EMAIL": "info@tech4underdogs.com",
+    "SUPABASE_URL": "https://mqbdfeupamhccknnapka.supabase.co",
+    "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1xYmRmZXVwYW1oY2Nrbm5hcGthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNDAzNDcsImV4cCI6MjA5NzcxNjM0N30.rE5PN7mAUtCbChc0aZLn89J6Plhi1XfUZcDqe4HHUMg"
+  }
+}
