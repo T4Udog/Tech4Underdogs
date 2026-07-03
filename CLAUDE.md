@@ -209,7 +209,7 @@ export const metadata: Metadata = {
 - **Don't** add a fifth color. Stick to orange/navy/sky/cream + white/teal-gradient.
 - **Don't** put more than one outlined word per heading — emphasis loses meaning.
 - **Don't** mix tagline sizes or styles — always `.tagline` class.
-- **Don't** ship lorem ipsum or fake contact info. Real email is `contact@tech4underdogs.com`.
+- **Don't** ship lorem ipsum or fake contact info. Real email is `info@tech4underdogs.com`.
 
 ---
 

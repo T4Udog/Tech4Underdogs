@@ -6,7 +6,7 @@ export const site = {
   // TODO(Andrew): replace before launch — placeholder phone.
   phone: { display: "(000) 000-0000", href: "tel:+10000000000" },
 
-  email: "contact@tech4underdogs.com",
+  email: "info@tech4underdogs.com",
 
   // Empty string => link is hidden (Footer skips empty URLs).
   social: {
