@@ -34,7 +34,7 @@ const itFaqs: FAQ[] = [
 const webFaqs: FAQ[] = [
   {
     q: "How much does a small business website cost?",
-    a: "Our Ready to Run local SEO websites start at $179 per month — with hosting, maintenance, security, and ongoing updates included. There's no large upfront bill. For businesses that need a fully custom or WordPress build, pricing is based on scope; those sites require no ongoing contract and are yours outright.",
+    a: "Our Ready to Run local SEO websites start at $149 per month — with hosting, maintenance, security, and ongoing updates included. There's no large upfront bill. For businesses that need a fully custom or WordPress build, pricing is based on scope; those sites require no ongoing contract and are yours outright.",
   },
   {
     q: "What is local SEO and does my small business website need it?",

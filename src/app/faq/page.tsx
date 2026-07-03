@@ -16,7 +16,7 @@ const itFaqs: FAQItem[] = [
   },
   {
     q: "How much does IT support cost for a small business?",
-    a: "Tech 4 Underdogs offers three tiers of IT support priced per user, per month — starting at $56/user/mo for our On Watch package. All packages include monitoring and real human support. There's a 3-user minimum. Pricing scales based on response time, security depth, and the level of access you need. Schedule a conversation and we'll help you figure out what makes sense for your business.",
+    a: "Tech 4 Underdogs offers three tiers of IT support priced per user, per month — starting at $35/user/mo for our On Watch package. All packages include monitoring and real human support. There's a 3-user minimum. Pricing scales based on response time, security depth, and the level of access you need. Schedule a conversation and we'll help you figure out what makes sense for your business.",
   },
   {
     q: "Do I need managed IT support if I only have a few employees?",

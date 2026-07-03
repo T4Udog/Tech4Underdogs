@@ -188,12 +188,6 @@ function Quiz({
   const cat = useMemo(() => CATEGORIES.find((c) => c.questions.some((qq) => qq.id === q.id))!, [q.id]);
   const selected = answers[q.id];
   const progress = ((idx + 1) / TOTAL_QUESTIONS) * 100;
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(false);
-    const t = window.setTimeout(() => setMounted(true), 20);
-    return () => window.clearTimeout(t);
-  }, [idx]);
 
   return (
     <section className="bg-navy text-white min-h-[calc(100vh-120px)]">
@@ -225,11 +219,7 @@ function Quiz({
 
         <div
           key={idx}
-          className="transition-all duration-500 ease-out"
-          style={{
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(14px)",
-          }}
+          className="scorecard-question-enter"
         >
           <p className="italic text-white/55 text-sm font-medium mb-3">{cat.sub}</p>
           <h2 className="h-section text-white mb-7">{q.prompt}</h2>
