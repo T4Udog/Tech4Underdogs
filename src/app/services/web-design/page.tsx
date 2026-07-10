@@ -10,6 +10,38 @@ export const metadata: Metadata = {
     "Fast, professional websites built for local search visibility. Hosting, maintenance, and security included. Built and supported by the same team.",
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Web Design & Hosting",
+  name: "Web Design & Hosting",
+  url: "https://tech4underdogs.com/services/web-design",
+  provider: {
+    "@type": "Organization",
+    name: "Tech 4 Underdogs",
+    url: "https://tech4underdogs.com",
+  },
+  areaServed: "US",
+  audience: {
+    "@type": "Audience",
+    audienceType: "Small businesses",
+  },
+  description:
+    "Fast, performance-optimized websites built for local search visibility — hosting, maintenance, and security included, built and supported by the same team.",
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "USD",
+    price: "149",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "149",
+      priceCurrency: "USD",
+      unitText: "per month",
+    },
+    url: "https://tech4underdogs.com/pricing#web-pricing",
+  },
+};
+
 /* ── Icons ─────────────────────────────────────────────────── */
 
 function Check() {
@@ -103,6 +135,10 @@ const inclusions = [
 export default function WebDesignPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* ── 1. Hero ─────────────────────────────────────── */}
       <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">

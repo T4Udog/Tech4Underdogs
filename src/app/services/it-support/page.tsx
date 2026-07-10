@@ -10,6 +10,38 @@ export const metadata: Metadata = {
     "Proactive IT support and security built for small, local businesses. Monitoring, helpdesk, threat protection, and ongoing maintenance — at small business pricing.",
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "IT Support & Security",
+  name: "IT Support & Security",
+  url: "https://tech4underdogs.com/services/it-support",
+  provider: {
+    "@type": "Organization",
+    name: "Tech 4 Underdogs",
+    url: "https://tech4underdogs.com",
+  },
+  areaServed: "US",
+  audience: {
+    "@type": "Audience",
+    audienceType: "Small businesses",
+  },
+  description:
+    "Proactive IT support and security for small, local businesses — monitoring, helpdesk, threat protection, and ongoing maintenance.",
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "USD",
+    price: "35",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "35",
+      priceCurrency: "USD",
+      unitText: "per user, per month",
+    },
+    url: "https://tech4underdogs.com/pricing#it-pricing",
+  },
+};
+
 /* ── Icons ─────────────────────────────────────────────────── */
 
 function Check() {
@@ -101,6 +133,10 @@ const inclusions = [
 export default function ITSupportPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* ── 1. Hero ─────────────────────────────────────── */}
       <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">

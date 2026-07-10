@@ -188,11 +188,61 @@ const jumpLinks = [
   { label: "Online Marketing", href: "#marketing-pricing", Icon: MegaphoneIcon },
 ];
 
+/* ── Schema ────────────────────────────────────────────────── */
+
+const pricingSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: "Tech 4 Underdogs Pricing",
+  url: "https://tech4underdogs.com/pricing",
+  itemListElement: [
+    ...itTiers.map((tier) => ({
+      "@type": "Offer",
+      name: `${tier.name} IT Support`,
+      description: tier.bestFor,
+      price: tier.price.replace("$", ""),
+      priceCurrency: "USD",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: tier.price.replace("$", ""),
+        priceCurrency: "USD",
+        unitText: "per user, per month",
+      },
+    })),
+    ...webPlans.map((plan) => ({
+      "@type": "Offer",
+      name: plan.name,
+      description: plan.description,
+      ...(plan.price.startsWith("$")
+        ? {
+            price: plan.price.replace("$", ""),
+            priceCurrency: "USD",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: plan.price.replace("$", ""),
+              priceCurrency: "USD",
+              unitText: "per month",
+            },
+          }
+        : {}),
+    })),
+    ...marketingServices.map((service) => ({
+      "@type": "Offer",
+      name: service.name,
+      description: service.description,
+    })),
+  ],
+};
+
 /* ── Page ──────────────────────────────────────────────────── */
 
 export default function PricingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingSchema) }}
+      />
       {/* ── Section 1: Hero ─────────────────────────────── */}
       <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">

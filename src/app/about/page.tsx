@@ -3,11 +3,27 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Testimonials from "@/components/sections/Testimonials";
 import { PrimaryCta, SecondaryCta } from "@/components/PrimaryCta";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About | Tech 4 Underdogs",
   description:
     "Tech 4 Underdogs was built for small businesses the big firms overlook. 30+ years of combined experience in IT, web, and marketing — put to work for the businesses that need it most.",
+};
+
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Tech 4 Underdogs",
+  url: "https://tech4underdogs.com/about",
+  mainEntity: {
+    "@type": "Organization",
+    name: site.name,
+    url: "https://tech4underdogs.com",
+    email: site.email,
+    description:
+      "Tech 4 Underdogs provides IT support, web design & hosting, and online marketing for small, local businesses — priced and sized for businesses the big firms overlook.",
+  },
 };
 
 const features = [
@@ -65,6 +81,10 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
       {/* ── Section 1: Hero ─────────────────────────────── */}
       <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">

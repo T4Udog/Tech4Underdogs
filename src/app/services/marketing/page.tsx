@@ -11,6 +11,56 @@ export const metadata: Metadata = {
     "Local SEO, Google Ads, and Google Business Profile management for small, local businesses. Honest pricing, plain-language reporting, real results.",
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Online Marketing",
+  name: "Online Marketing",
+  url: "https://tech4underdogs.com/services/marketing",
+  provider: {
+    "@type": "Organization",
+    name: "Tech 4 Underdogs",
+    url: "https://tech4underdogs.com",
+  },
+  areaServed: "US",
+  audience: {
+    "@type": "Audience",
+    audienceType: "Small businesses",
+  },
+  description:
+    "Local SEO, Google Ads, and Google Business Profile management for small, local businesses — plain-language reporting, no long-term lock-in.",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Online Marketing Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Local SEO" },
+        price: "299",
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Google Ads (PPC)" },
+        price: "399",
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Google Business Profile" },
+        price: "199",
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Google Local Services" },
+        price: "199",
+        priceCurrency: "USD",
+      },
+    ],
+  },
+};
+
 /* ── Icons ─────────────────────────────────────────────────── */
 
 function Check() {
@@ -105,6 +155,10 @@ const inclusions = [
 export default function MarketingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* ── 1. Hero ─────────────────────────────────────── */}
       <section className="bg-cream overflow-hidden">
         <div className="section-container section-y">
