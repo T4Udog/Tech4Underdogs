@@ -1,0 +1,104 @@
+# Foundation task executor — .github/workflows/foundation-task.yml in each
+# git-based CLIENT repo (Next.js / Astro / other). The Andrew Mindy portal
+# dispatches this when an SEO foundation task is approved; a coding agent makes
+# the change and opens a PR. Merging the PR marks the task completed via the
+# portal's pull_request webhook. Install + secrets + webhook: see SETUP.md.
+#
+# CONTRACT: the portal passes the task id via `branch` = foundation/<task_id>.
+# The PR MUST be opened from that branch — the merge webhook parses the task id
+# out of it to close the loop. Do not rename the branch.
+
+name: Foundation Task
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: "Portal implementation_task id"
+        required: true
+      task_type:
+        description: "Foundation task_type (technical-setup, on-page-setup, meta-update, perf-fix, content-setup)"
+        required: true
+      title:
+        description: "Task title"
+        required: true
+      description:
+        description: "Task description — what to change"
+        required: true
+      site_url:
+        description: "Client site URL"
+        required: false
+        default: ""
+      portal_url:
+        description: "Portal base URL"
+        required: false
+        default: "https://portal.andrewmindy.com"
+      branch:
+        description: "Branch to open the PR from (foundation/<task_id>)"
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  foundation-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create working branch
+        run: |
+          git config user.name "andrew-mindy-portal[bot]"
+          git config user.email "portal-bot@andrewmindy.com"
+          git checkout -b "${{ inputs.branch }}"
+
+      - name: Run coding agent
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Headless, single-shot prompt. The agent inspects the repo and makes
+          # the concrete change described by the foundation task, then commits.
+          prompt: |
+            You are implementing a single SEO foundation task in this repository.
+
+            Task type: ${{ inputs.task_type }}
+            Title: ${{ inputs.title }}
+            Site URL: ${{ inputs.site_url }}
+
+            What to change:
+            ${{ inputs.description }}
+
+            Rules:
+            - Make the smallest change that fully satisfies the task.
+            - Follow the conventions already present in this codebase.
+            - Do NOT change unrelated files, dependencies, or config.
+            - Commit your changes on the current branch with a clear message.
+            - If the task is already satisfied, make no change and say so.
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Push whatever the agent committed. If there is nothing to push, exit
+          # cleanly — the portal task stays in_progress and can be re-dispatched.
+          if git diff --quiet "origin/${{ github.event.repository.default_branch }}" -- 2>/dev/null && [ -z "$(git log origin/${{ github.event.repository.default_branch }}..HEAD --oneline)" ]; then
+            echo "No changes produced by the agent — nothing to open a PR for."
+            exit 0
+          fi
+          git push -u origin "${{ inputs.branch }}"
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "${{ inputs.branch }}" \
+            --title "Foundation: ${{ inputs.title }}" \
+            --body "Automated foundation task from the Andrew Mindy portal.
+
+          - Task type: \`${{ inputs.task_type }}\`
+          - Portal task id: \`${{ inputs.task_id }}\`
+
+          ${{ inputs.description }}
+
+          Merging this PR marks the foundation task complete in the portal."
