@@ -104,3 +104,14 @@ jobs:
           ${{ inputs.description }}
 
           Merging this PR marks the foundation task complete in the portal."
+
+      # If any step failed, tell the portal so the task doesn't sit in
+      # "Building" forever (the merge webhook never fires when no PR opened).
+      # The task UUID is the capability; the endpoint only flips this task
+      # from in_progress to failed.
+      - name: Report failure to portal
+        if: failure()
+        run: |
+          curl -s -X POST "${{ inputs.portal_url }}/api/tasks/${{ inputs.task_id }}/workflow-failed" \
+            -H "Content-Type: application/json" \
+            -d "{\"run_url\":\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" || true
