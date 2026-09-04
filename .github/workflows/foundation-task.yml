@@ -88,7 +88,12 @@ jobs:
           # Push whatever the agent committed. If there is nothing to push, exit
           # cleanly — the portal task stays in_progress and can be re-dispatched.
           if git diff --quiet "origin/${{ github.event.repository.default_branch }}" -- 2>/dev/null && [ -z "$(git log origin/${{ github.event.repository.default_branch }}..HEAD --oneline)" ]; then
-            echo "No changes produced by the agent — nothing to open a PR for."
+            echo "No changes produced by the agent — requirement already satisfied."
+            # Tell the portal so the task completes instead of sitting in
+            # "Building" forever (no PR = the merge webhook never fires).
+            curl -s -X POST "${{ inputs.portal_url }}/api/tasks/${{ inputs.task_id }}/workflow-noop" \
+              -H "Content-Type: application/json" \
+              -d "{\"run_url\":\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" || true
             exit 0
           fi
           git push -u origin "${{ inputs.branch }}"
